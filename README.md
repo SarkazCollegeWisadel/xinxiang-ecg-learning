@@ -4,7 +4,7 @@
 
 目前在线版：https://xinxiang-ecg-learning-ipad.beichendu322.chatgpt.site/
 
-本仓库是用户自己的源码备份。可从 [Releases](../../releases) 下载已构建的 iPad 网页包。ZIP 用于静态部署和备份；iPad 使用 HTTPS 网址添加到主屏幕。
+本仓库是用户自己的源码备份。可从 [Releases](https://github.com/SarkazCollegeWisadel/xinxiang-ecg-learning/releases) 下载已构建的 iPad 网页包。ZIP 用于静态部署和备份；iPad 使用 HTTPS 网址添加到主屏幕。
 
 ## 功能
 
@@ -53,3 +53,4 @@ node packaging/check-ipad.mjs
 - [Kors et al.](https://doi.org/10.1093/oxfordjournals.eurheartj.a059647)：真实 ECG 的 VCG 为回归重建结果。
 
 第三方软件许可集中在 `public/licenses/`。本仓库不包含账号凭据、本机浏览器资料或用户学习笔记。建模审阅规范包含历史证据路径；详细图片审阅产物保留在本机，不属于网页运行依赖。
+
