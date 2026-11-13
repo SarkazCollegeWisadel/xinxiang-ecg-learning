@@ -2,7 +2,9 @@
 
 从电偶出发，学习十二导联、额面与水平面投影、三维向量心电图及常见诊断学病例。React、TypeScript、Three.js；支持安装到 iPad 主屏幕并离线使用。
 
-目前在线版：https://xinxiang-ecg-learning-ipad.beichendu322.chatgpt.site/
+唯一维护入口：https://sarkazcollegewisadel.github.io/xinxiang-ecg-learning/
+
+旧 Sites 站点已弃用，不再更新。它目前未配置自动关站，不作为长期使用入口。
 
 本仓库为公开源码备份，并通过 GitHub Actions 自动部署 GitHub Pages。可从 [Releases](https://github.com/SarkazCollegeWisadel/xinxiang-ecg-learning/releases) 下载已构建的 iPad 网页包。ZIP 用于静态部署和备份；iPad 使用 HTTPS 网址添加到主屏幕。
 
@@ -53,4 +55,5 @@ node packaging/check-ipad.mjs
 - [Kors et al.](https://doi.org/10.1093/oxfordjournals.eurheartj.a059647)：真实 ECG 的 VCG 为回归重建结果。
 
 第三方软件许可集中在 `public/licenses/`。本仓库不包含账号凭据、本机浏览器资料或用户学习笔记。建模审阅规范包含历史证据路径；详细图片审阅产物保留在本机，不属于网页运行依赖。
+
 
