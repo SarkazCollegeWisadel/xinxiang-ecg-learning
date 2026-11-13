@@ -4,7 +4,7 @@
 
 目前在线版：https://xinxiang-ecg-learning-ipad.beichendu322.chatgpt.site/
 
-本仓库是用户自己的源码备份。可从 [Releases](https://github.com/SarkazCollegeWisadel/xinxiang-ecg-learning/releases) 下载已构建的 iPad 网页包。ZIP 用于静态部署和备份；iPad 使用 HTTPS 网址添加到主屏幕。
+本仓库为公开源码备份，并通过 GitHub Actions 自动部署 GitHub Pages。可从 [Releases](https://github.com/SarkazCollegeWisadel/xinxiang-ecg-learning/releases) 下载已构建的 iPad 网页包。ZIP 用于静态部署和备份；iPad 使用 HTTPS 网址添加到主屏幕。
 
 ## 功能
 
