@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import {cases} from '../src/cases';
+import {generate,leads,norm,measure,qrsName} from '../src/engine';
+fs.mkdirSync('evidence',{recursive:true});
+const energy=(f:ReturnType<typeof generate>[number])=>Math.hypot(...leads.map(l=>f.leads[l]));
+const support=(a:ReturnType<typeof generate>,start:number,end:number)=>{const w=a.filter(f=>f.t>=start&&f.t<=end);const threshold=Math.max(...w.map(energy))*.015;const active=w.filter(f=>energy(f)>threshold);return {onset:active[0]?.t,offset:active.at(-1)?.t,durationMs:Math.round(((active.at(-1)?.t||0)-(active[0]?.t||0))*1000)};};
+const metrics=cases.map(c=>{const a=generate(c);return {id:c.id,name:c.name,group:c.group,samples:a.length,finite:a.every(f=>leads.every(l=>Number.isFinite(f.leads[l]))),maxEinthovenError:Math.max(...a.map(f=>Math.abs(f.leads.I+f.leads.III-f.leads.II))),maxWctError:Math.max(...a.map(f=>Math.abs(f.leads.V1-(f.potentials.V1-f.wct)))),qrsWindow:support(a,.395,.57),pWindow:support(a,.1,.395),v1Name:qrsName(a,'V1'),V1:measure(a,'V1'),V5:measure(a,'V5'),stAt550ms:{II:a[275].leads.II,V2:a[275].leads.V2,V5:a[275].leads.V5}};});
+fs.writeFileSync('evidence/numerical-metrics.json',JSON.stringify(metrics,null,2));
+const normal=metrics.find(m=>m.id==='normal')!,av1=metrics.find(m=>m.id==='av1')!;
+const summary={caseCount:cases.length,sampleCount:cases.length*3001,maxEinthovenError:Math.max(...metrics.map(m=>m.maxEinthovenError)),maxWctError:Math.max(...metrics.map(m=>m.maxWctError)),normalQrsMs:normal.qrsWindow.durationMs,rbbbQrsMs:metrics.find(m=>m.id==='rbbb')!.qrsWindow.durationMs,lbbbQrsMs:metrics.find(m=>m.id==='lbbb')!.qrsWindow.durationMs,normalPrMs:Math.round((normal.qrsWindow.onset!-normal.pWindow.onset!)*1000),av1PrMs:Math.round((av1.qrsWindow.onset!-av1.pWindow.onset!)*1000)};
+fs.writeFileSync('evidence/summary.json',JSON.stringify(summary,null,2));
+fs.writeFileSync('病例覆盖表.md','# 病例与教学机制覆盖\n\n共 '+cases.length+' 个预设。全部有三维向量、三平面投影和十二导联波形。下列为参数化典型示例；表中机制及预期不能替代真实记录的临床判读。\n\n| 类别 | 病例 | 改变的机制 | 观察重点 |\n|---|---|---|---|\n'+cases.map(c=>`| ${c.group} | ${c.name} | ${c.mechanism} | ${c.expected} |`).join('\n')+'\n\n原始数值验证结果见 [numerical-metrics.json](evidence/numerical-metrics.json)。真实记录另见 public/data/index.json，不用模拟数据冒充。\n');
+console.log(JSON.stringify(summary,null,2));

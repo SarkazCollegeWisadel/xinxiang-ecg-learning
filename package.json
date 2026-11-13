@@ -1,0 +1,7 @@
+{
+  "name": "ecg-vector-learning", "version": "1.0.0", "private": true, "type": "module",
+  "scripts": {"dev":"vite --host 127.0.0.1 --port 5186 --strictPort", "build":"node scripts/prepare-heart-runtime.mjs && tsc --noEmit && vite build && node scripts/build-offline.mjs", "test":"tsx --test tests/engine.test.ts", "preview":"vite preview --host 127.0.0.1 --port 5186 --strictPort", "test:browser":"playwright test"},
+  "dependencies": {"react":"19.3.1", "react-dom":"19.3.1", "three":"0.187.0", "lucide-react":"^0.577.0"},
+  "devDependencies": {"@types/react":"^19.2.0", "@types/react-dom":"^19.2.0", "@types/three":"^0.183.0", "typescript":"~6.0.2", "vite":"8.3.8", "tsx":"^4.21.0", "@playwright/test":"^1.58.0"}
+}
+

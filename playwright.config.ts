@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'tests/browser',timeout:60000,workers:1,retries:0,reporter:[['list'],['json',{outputFile:'test-results/browser-results.json'}]],use:{baseURL:process.env.ECG_TEST_URL||'http://127.0.0.1:5186',viewport:{width:1440,height:1100},screenshot:'only-on-failure',launchOptions:{executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--enable-unsafe-swiftshader','--use-angle=swiftshader']}}});

@@ -1,0 +1,6 @@
+{
+  "source": "anterior.png",
+  "method": "Only dark pixels >8px from saturated anatomical color removed. Unmodified reference remains visual authority.",
+  "removedPixels": 11379,
+  "totalPixels": 800800
+}
