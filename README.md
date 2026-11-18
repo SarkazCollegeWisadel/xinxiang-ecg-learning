@@ -1,3 +1,5 @@
+> 分类：医学学习（topic: medical-learning）
+
 # 心向 · 中文三维心电向量学习台
 
 从电偶出发，学习十二导联、额面与水平面投影、三维向量心电图及常见诊断学病例。React、TypeScript、Three.js；支持安装到 iPad 主屏幕并离线使用。
